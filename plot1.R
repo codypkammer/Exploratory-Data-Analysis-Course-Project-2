@@ -21,6 +21,7 @@ SCC <- readRDS("data/Source_Classification_Code.rds")
 # Load Required package 
 
 library(dplyr)
+library(ggplot2)
 
 #Plot 1
 

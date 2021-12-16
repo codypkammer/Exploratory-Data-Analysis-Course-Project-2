@@ -1,10 +1,28 @@
 ### 4. Across the United States, how have emissions from coal combustion-related 
 ### sources changed from 1999–2008?
 
-# Load needed packages dplyr & ggplot2
+# Set working directory 
+setwd("G:/R/Exploratory Data Analysis/course project 2/Exploratory-Data-Analysis-Course-Project-2")
+
+
+# Bringing in data
+data_project_files <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2FNEI_data.zip" 
+
+download.file(data_project_files,destfile=".data.zip",method="auto")  
+
+unzip(zipfile=".data.zip",exdir="./data")
+
+NEI <- readRDS("data/summarySCC_PM25.rds")
+
+SCC <- readRDS("data/Source_Classification_Code.rds")
+
+# Load Required package 
 
 library(dplyr)
 library(ggplot2)
+
+
+# Plot 4
 
 combustion_coal <- grepl("Fuel Comb.*Coal", SCC$EI.Sector)
 combustion_coal_sources <- SCC[combustion_coal,]

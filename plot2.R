@@ -2,6 +2,30 @@
 ### (\color{red}{\verb|fips == "24510"|}fips == "24510") from 1999 to 2008? 
 ### Use the base plotting system to make a plot answering this question.
 
+
+
+# Set working directory 
+setwd("G:/R/Exploratory Data Analysis/course project 2/Exploratory-Data-Analysis-Course-Project-2")
+
+
+# Bringing in data
+data_project_files <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2FNEI_data.zip" 
+
+download.file(data_project_files,destfile=".data.zip",method="auto")  
+
+unzip(zipfile=".data.zip",exdir="./data")
+
+NEI <- readRDS("data/summarySCC_PM25.rds")
+
+SCC <- readRDS("data/Source_Classification_Code.rds")
+
+# Load Required package 
+
+library(dplyr)
+library(ggplot2)
+
+#Plot 2
+
 balt.emissions<-summarise(group_by(filter(NEI, fips == "24510"), year),
                                   Emissions=sum(Emissions))
 clrs <- c("red", "green", "blue", "yellow")
